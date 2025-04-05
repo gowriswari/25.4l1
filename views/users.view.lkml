@@ -25,6 +25,12 @@ view: users {
     timeframes: [raw, time, date, week, month, quarter, year]
     sql: ${TABLE}.created_at ;;
   }
+  dimension_group: created_test {
+    type: duration
+    intervals: [day]
+    sql_start: ${created_date} ;;
+    sql_end: ${age} ;;
+  }
   dimension: email {
     type: string
     sql: ${TABLE}.email ;;
@@ -57,15 +63,15 @@ view: users {
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
-	id,
-	first_name,
-	last_name,
-	events.count,
-	orders.count,
-	saralooker.count,
-	sindhu.count,
-	user_data.count
-	]
+  id,
+  first_name,
+  last_name,
+  events.count,
+  orders.count,
+  saralooker.count,
+  sindhu.count,
+  user_data.count
+  ]
   }
 
 }
