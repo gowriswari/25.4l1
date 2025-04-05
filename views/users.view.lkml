@@ -27,9 +27,9 @@ view: users {
   }
   dimension_group: created_test {
     type: duration
-    intervals: [day]
+    intervals: [hour, day]
     sql_start: ${created_date} ;;
-    sql_end: ${age} ;;
+    sql_end: CURRENT_TIMESTAMP() ;;
   }
   dimension: email {
     type: string
