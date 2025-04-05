@@ -27,7 +27,7 @@ view: users {
   }
   dimension_group: created_test {
     type: duration
-    intervals: [hour, day]
+    intervals: [hour, day, week]
     sql_start: ${created_date} ;;
     sql_end: CURRENT_TIMESTAMP() ;;
   }
