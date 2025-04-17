@@ -4,7 +4,7 @@ connection: "thelook"
 include: "/views/**/*.view.lkml"
 
 datagroup: 1_gowri_default_datagroup {
-  # sql_trigger: SELECT MAX(id) FROM etl_log;;
+  sql_trigger: SELECT MAX(id) FROM etl_log;;
   max_cache_age: "1 hour"
 }
 
@@ -159,6 +159,24 @@ explore: order_items {
     type: left_outer
     sql_on: ${inventory_items.product_id} = ${products.id} ;;
     relationship: many_to_one
+  }
+}
+
+explore: +order_items {
+  aggregate_table: rollup__orders_status {
+    query: {
+      dimensions: [orders.status]
+      measures: [orders.count, users.check]
+      filters: [
+        users.city: "-Abbeville,-Adamsville,-Adelanto,-Adel",
+        users.created_date: "80 months"
+      ]
+      timezone: "America/Los_Angeles"
+    }
+
+    materialization: {
+      datagroup_trigger: 1_gowri_default_datagroup
+    }
   }
 }
 
