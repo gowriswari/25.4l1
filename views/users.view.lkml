@@ -25,6 +25,12 @@ view: users {
     timeframes: [raw, time, date, week, month, quarter, year]
     sql: ${TABLE}.created_at ;;
   }
+  dimension_group: created_test {
+    type: duration
+    intervals: [hour, day, week]
+    sql_start: ${created_date} ;;
+    sql_end: CURRENT_TIMESTAMP() ;;
+  }
   dimension: email {
     type: string
     sql: ${TABLE}.email ;;
