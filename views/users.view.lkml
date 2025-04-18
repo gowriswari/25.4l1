@@ -60,6 +60,11 @@ view: users {
     drill_fields: [detail*]
   }
 
+  measure: check {
+    type: count_distinct
+    sql: ${first_name} ;;
+  }
+
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
