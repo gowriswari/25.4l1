@@ -273,7 +273,12 @@ explore: test_space_in_column_name {}
 
 explore: thor {}
 
-explore: users {}
+explore: users {
+  access_filter: {
+    field: users.id
+    user_attribute: user_id_greater_than_100
+  }
+}
 
 explore: user_data {
   join: users {
