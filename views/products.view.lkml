@@ -19,6 +19,27 @@ view: products {
     type: string
     sql: ${TABLE}.department ;;
   }
+  dimension: shop {
+    type: string
+    sql: CASE WHEN ${department} = 'Men' and ${category} = 'Accessories' then 'Men Accessories'
+      WHEN ${department} = 'Men' and ${category} = 'Active' then 'Men Active'
+      WHEN ${department} = 'Men' and ${category} = 'Blazers & Jackets' then 'Men Blazers & Jackets'
+      WHEN ${department} = 'Men' and ${category} = 'Clothing Sets' then 'Men Clothing Sets'
+      WHEN ${department} = 'Men' and ${category} = 'Dresses' then 'Men Dresses'
+      WHEN ${department} = 'Men' and ${category} = 'Jeans' then 'Men Jeans'
+      ELSE ${department}
+      END
+      ;;
+  }
+
+  dimension: sbu {
+    type: string
+    sql: case
+      when ${brand} = 'Champion' THEN 'Men Accessories Champion'
+      WHEN ${brand} = 'Calvin Klein' THEN 'Men Active Calvin Klein'
+      ELSE ${brand} END;;
+  }
+
   dimension: item_name {
     type: string
     sql: ${TABLE}.item_name ;;
