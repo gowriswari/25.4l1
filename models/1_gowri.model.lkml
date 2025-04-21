@@ -273,7 +273,13 @@ explore: test_space_in_column_name {}
 
 explore: thor {}
 
-explore: users {}
+explore: users {
+  access_filter: {
+    field: users.gender
+    user_attribute: gender
+
+  }
+}
 
 explore: user_data {
   join: users {
