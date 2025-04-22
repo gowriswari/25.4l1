@@ -17,4 +17,13 @@ view: countries {
   measure: count {
     type: count
   }
+
+  dimension: city {
+    type: string
+    sql: ${TABLE}.state ;;
+    link: {
+      label: "City Metrics Explore"
+      url: "/dashboard/67"
+    }
+  }
 }
