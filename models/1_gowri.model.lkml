@@ -293,8 +293,8 @@ explore: thor {}
 
 explore: users {
   access_filter: {
-    field: users.gender
-    user_attribute: gender
+    field: users.id
+    user_attribute: user_id_greater_than_100
   }
 }
 
