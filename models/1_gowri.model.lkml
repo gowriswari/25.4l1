@@ -292,10 +292,10 @@ explore: test_space_in_column_name {}
 explore: thor {}
 
 explore: users {
-  access_filter: {
-    field: users.gender
-    user_attribute: gender
-  }
+  # access_filter: {
+  #   field: users.gender
+  #   user_attribute: gender
+  # }
 }
 
 explore: user_data {
