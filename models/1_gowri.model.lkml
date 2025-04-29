@@ -292,10 +292,17 @@ explore: test_space_in_column_name {}
 explore: thor {}
 
 explore: users {
-  # access_filter: {
-  #   field: users.gender
-  #   user_attribute: gender
-  # }
+# <<<<<<< HEAD
+#   # access_filter: {
+#   #   field: users.gender
+#   #   user_attribute: gender
+#   # }
+# =======
+#   access_filter: {
+#     field: users.id
+#     user_attribute: user_id_greater_than_100
+#   }
+# >>>>>>> 74beec1644ae2f08872e2f0c3e22b6aa1f990bf7
 }
 
 explore: user_data {
