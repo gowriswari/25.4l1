@@ -7,7 +7,14 @@ datagroup: 1_gowri_default_datagroup {
   sql_trigger: SELECT MAX(id) FROM etl_log;;
   max_cache_age: "1 hour"
 }
-
+datagroup: demo1 {
+  max_cache_age: "30 minutes"
+  sql_trigger: SELECT CURDATE()  ;;
+}
+datagroup: demo2 {
+  max_cache_age: "1 hour"
+  sql_trigger: SELECT HOUR(CURTIME()) ;;
+}
 persist_with: 1_gowri_default_datagroup
 
 explore: billion_orders {
@@ -109,6 +116,7 @@ explore: incremental_pdts_test {}
 explore: ints {}
 
 explore: inventory_items {
+  persist_with: demo1
   join: products {
     type: left_outer
     sql_on: ${inventory_items.product_id} = ${products.id} ;;
@@ -292,6 +300,7 @@ explore: test_space_in_column_name {}
 explore: thor {}
 
 explore: users {
+  persist_with: demo2
   access_filter: {
     field: users.id
     user_attribute: user_id_greater_than_100
