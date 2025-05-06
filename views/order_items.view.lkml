@@ -1,11 +1,15 @@
 view: order_items {
   sql_table_name: demo_db.order_items ;;
-  drill_fields: [id]
+
 
   dimension: id {
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
+    link: {
+      label: "test"
+      url: "https://gcpl254.cloud.looker.com/dashboards/1"
+    }
   }
   dimension: inventory_item_id {
     type: number
@@ -36,6 +40,8 @@ view: order_items {
   }
   measure: count {
     type: count
-    drill_fields: [id, orders.id, inventory_items.id]
+    drill_fields:[details*]
+
   }
+  set: details {fields: [id, order_id, returned_date, count, sale_price ]}
 }
